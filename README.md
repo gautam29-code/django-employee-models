@@ -1,32 +1,36 @@
-🚀 Learning Django – Model Relationships & Admin Panel
+# Django Employee Management Models
 
-Today I practiced Django ORM by creating a small employee management schema and connecting it with the Django admin panel.
+This project demonstrates Django model design and admin panel integration.
 
-Models implemented:
+## Models
 
-• Dept – department details
-• Emp – employee details
-• Salgrade – salary grade structure
+Dept
+- deptno (Primary Key)
+- dname (Unique)
+- loc
 
-Key Concepts Used:
+Emp
+- empno (Primary Key)
+- ename
+- job
+- mgr
+- hiredate
+- sal
+- comm
+- dept (ForeignKey)
 
-✔ Django Models
-✔ Primary Keys
-✔ ForeignKey Relationships
-✔ Admin Panel Integration
-✔ Django ORM
+Salgrade
+- grade (Primary Key)
+- lowsal
+- hisal
 
-Example relationship:
+## Features
+- Django ORM models
+- ForeignKey relationship
+- Admin panel integration
+- CRUD operations via Django Admin
 
-class Emp(models.Model):
-empno = models.IntegerField(primary_key=True)
-ename = models.CharField(max_length=20)
-dept = models.ForeignKey(Dept, on_delete=models.CASCADE)
-
-After registering the models in admin.py, I was able to manage all records directly from the Django Admin dashboard.
-
-This is one of the powerful features of Django that allows rapid backend development.
-
-Currently improving my skills in Python, Django, and Full Stack Development.
-
-#Python #Django #BackendDevelopment #WebDevelopment #LearningInPublic #FullStackDeveloper
+## Tech Stack
+Python
+Django
+SQLite
