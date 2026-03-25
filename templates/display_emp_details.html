@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee & Dept Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-size: 16px;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 10px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DEPT DETAILS</h1>
+    <table border="2" cellpadding="5" cellspacing="2">
+        <thead>
+            <tr>
+                <th>deptno</th>
+                <th>dname</th>
+                <th>loc</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for DO in QSLDO %}
+            <tr>
+                <td>{{ DO.deptno }}</td>
+                <td>{{ DO.dname }}</td>
+                <td>{{ DO.loc }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h1>EMP DETAILS</h1>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>empno</th>
+                <th>empname</th>
+                <th>job</th>
+                <th>manager</th>
+                <th>hiredate</th>
+                <th>salary</th>
+                <th>commission</th>
+                <th>dept</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for EO in QSLEO %}
+            <tr>
+                <td>{{ EO.empno }}</td>
+                <td>{{ EO.ename }}</td>
+                <td>{{ EO.job }}</td>
+                <td>
+                    {% if EO.mgr %}
+                        {{ EO.mgr.empno }}
+                    {% else %}
+                        
+                    {% endif %}
+                </td>
+
+                <td>{{ EO.hiredate }}</td>
+                <td>{{ EO.sal }}</td>
+                <td>{%if EO.comm%}
+                        {{ EO.comm}}
+                    {%else%}
+
+                    {% endif %}
+                </td>
+                <td>{{ EO.dept.deptno }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
